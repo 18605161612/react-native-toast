@@ -12,8 +12,7 @@ require 'json'
  +  s.author              = package['author']
  +  s.source              = { :git => 'https://github.com/remobile/react-native-toast.git', :tag => 'v'+s.version.to_s }
  +
- +  s.platform              = :ios, '8.0'
- +  s.ios.deployment_target = '8.0'
+ +  s.platform       = :ios, "7.0"
  +
  +  s.dependency 'React'
  +
