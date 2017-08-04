@@ -1,7 +1,7 @@
 #import <UIKit/UIKit.h>
 #import <React/RCTLog.h>
 #import <React/RCTBridgeModule.h>
-#import "Toast+UIView.h"
+#import "UIView+Toast.h"
 
 
 @interface Toast : NSObject <RCTBridgeModule>
@@ -11,36 +11,54 @@
 
 RCT_EXPORT_MODULE(Toast)
 
+static NSDictionary * POSITION_MAPING () {
+    return @{
+             @"top": CSToastPositionTop,
+             @"center": CSToastPositionCenter,
+             @"bottom": CSToastPositionBottom
+             };;
+}
+
 
 RCT_EXPORT_METHOD(show:(NSDictionary *)options) {
     NSString *message  = [options objectForKey:@"message"];
     NSString *duration = [options objectForKey:@"duration"];
     NSString *position = [options objectForKey:@"position"];
-    NSNumber *addPixelsY = [options objectForKey:@"addPixelsY"];
     
     if (![position isEqual: @"top"] && ![position isEqual: @"center"] && ![position isEqual: @"bottom"]) {
         RCTLogError(@"invalid position. valid options are 'top', 'center' and 'bottom'");
         return;
     }
     
-    NSInteger durationInt;
+    position = POSITION_MAPING(position);
+    
+    NSTimeInterval durationInterval;
     if ([duration isEqual: @"short"]) {
-        durationInt = 2;
+        durationInterval = 2;
     } else if ([duration isEqual: @"long"]) {
-        durationInt = 5;
+        durationInterval = 5;
     } else {
-        RCTLogError(@"invalid duration. valid options are 'short' and 'long'");
-        return;
+        durationInterval = 1.5;
     }
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[[[UIApplication sharedApplication]windows]firstObject] makeToast:message duration:durationInt position:position addPixelsY:addPixelsY == nil ? 0 : [addPixelsY intValue]];
+        UIView *hostView = [[[UIApplication sharedApplication]windows]firstObject];
+        if(!hostView) {
+            hostView = [[UIApplication sharedApplication] keyWindow];
+        }
+        
+        [hostView makeToast:message duration:durationInterval position:position style:[[CSToastStyle alloc] initWithDefaultStyle]];
+        
     });
 }
 
 RCT_EXPORT_METHOD(hide) {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[[[UIApplication sharedApplication]windows]firstObject] hideToast];
+        UIView *hostView = [[[UIApplication sharedApplication]windows]firstObject];
+        if(!hostView) {
+            hostView = [[UIApplication sharedApplication] keyWindow];
+        }
+        [hostView hideToasts];
     });
 }
 
