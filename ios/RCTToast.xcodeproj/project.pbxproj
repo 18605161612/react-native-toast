@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		327633601BFAAE28004DA88E /* Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 3276335D1BFAAE28004DA88E /* Toast.m */; };
-		327633611BFAAE28004DA88E /* Toast+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3276335F1BFAAE28004DA88E /* Toast+UIView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,8 +25,6 @@
 /* Begin PBXFileReference section */
 		327633421BFAAD7E004DA88E /* libRCTToast.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRCTToast.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3276335D1BFAAE28004DA88E /* Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Toast.m; sourceTree = "<group>"; };
-		3276335E1BFAAE28004DA88E /* Toast+UIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Toast+UIView.h"; sourceTree = "<group>"; };
-		3276335F1BFAAE28004DA88E /* Toast+UIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Toast+UIView.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,8 +58,6 @@
 			isa = PBXGroup;
 			children = (
 				3276335D1BFAAE28004DA88E /* Toast.m */,
-				3276335E1BFAAE28004DA88E /* Toast+UIView.h */,
-				3276335F1BFAAE28004DA88E /* Toast+UIView.m */,
 			);
 			path = RCTToast;
 			sourceTree = "<group>";
@@ -123,7 +118,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				327633611BFAAE28004DA88E /* Toast+UIView.m in Sources */,
 				327633601BFAAE28004DA88E /* Toast.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
