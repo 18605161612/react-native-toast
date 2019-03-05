@@ -15,6 +15,6 @@ Pod::Spec.new do |s|
   s.source_files        = 'ios/**/*.{h,m}'
   s.exclude_files       = 'android/**/*'
   s.dependency 'React'
-  s.dependency 'Toast', '~> 3.1.0'
+  s.dependency 'NIOToast'
 
 end
