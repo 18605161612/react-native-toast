@@ -58,7 +58,7 @@ RCT_EXPORT_METHOD(hide) {
         if(!hostView) {
             hostView = [[UIApplication sharedApplication] keyWindow];
         }
-        [hostView hideToasts];
+        [hostView hideToast];
     });
 }
 
